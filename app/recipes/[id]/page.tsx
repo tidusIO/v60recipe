@@ -3,6 +3,13 @@ import Header from '../../../components/Header';
 import { recipes } from '../../../data/recipes';
 import { notFound } from 'next/navigation';
 
+// Generate static params for all recipe IDs
+export function generateStaticParams() {
+  return recipes.map((recipe) => ({
+    id: recipe.id,
+  }));
+}
+
 interface RecipeDetailPageProps {
   params: {
     id: string;
