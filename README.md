@@ -100,6 +100,62 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Deployment
+
+### 🚀 **Netlify Deployment**
+
+This project is optimized for deployment on Netlify with static export. The configuration is already set up for you.
+
+#### **Automatic Deployment (Recommended)**
+
+1. **Push to GitHub**: Make sure your code is in a GitHub repository
+
+2. **Connect to Netlify**:
+   - Go to [netlify.com](https://netlify.com) and sign up/login
+   - Click "New site from Git"
+   - Choose GitHub and select your repository
+   - Netlify will automatically detect the build settings from `netlify.toml`
+
+3. **Deploy**: Click "Deploy site" - Netlify will automatically:
+   - Run `npm run build`
+   - Publish the `out/` directory
+   - Set up continuous deployment
+
+#### **Manual Deployment**
+
+1. **Build the project**:
+```bash
+npm run build
+```
+
+2. **Deploy the `out/` folder**:
+   - Drag and drop the `out/` folder to Netlify's deploy area
+   - Or use Netlify CLI: `netlify deploy --prod --dir=out`
+
+#### **Configuration Details**
+
+The project includes:
+- **`netlify.toml`**: Build configuration and redirects
+- **`next.config.js`**: Static export configuration
+- **Custom 404 page**: `app/not-found.tsx`
+- **Security headers**: CSP, XSS protection, etc.
+- **Caching rules**: Optimized for static assets
+
+#### **Environment Variables**
+
+If you need environment variables:
+1. Go to Site settings → Environment variables in Netlify
+2. Add your variables (e.g., `NEXT_PUBLIC_API_URL`)
+3. Redeploy the site
+
+#### **Custom Domain**
+
+To use a custom domain:
+1. Go to Site settings → Domain management
+2. Add your custom domain
+3. Configure DNS settings as instructed
+4. SSL certificate will be automatically provisioned
+
 ## Project Structure
 
 ```
@@ -108,6 +164,7 @@ v60recipe/
 │   ├── globals.css        # Global styles and Tailwind imports
 │   ├── layout.tsx         # Root layout component
 │   ├── page.tsx           # Homepage component
+│   ├── not-found.tsx      # Custom 404 page
 │   ├── recipes/           # Recipe pages
 │   │   ├── page.tsx       # All recipes with filtering
 │   │   └── [id]/          # Individual recipe pages
@@ -121,8 +178,9 @@ v60recipe/
 ├── data/                  # Static data and types
 │   └── recipes.ts         # Recipe data and TypeScript interfaces
 ├── public/                # Static assets
+├── netlify.toml           # Netlify deployment configuration
 ├── tailwind.config.js     # Tailwind CSS configuration
-├── next.config.js         # Next.js configuration
+├── next.config.js         # Next.js configuration (static export)
 └── package.json           # Dependencies and scripts
 ```
 

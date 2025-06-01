@@ -126,6 +126,10 @@ Thumbs.db
 # Vercel
 .vercel
 
+# Netlify
+.netlify/
+netlify/
+
 # Turbo
 .turbo
 
